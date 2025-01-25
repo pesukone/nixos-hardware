@@ -324,5 +324,5 @@ in
       "modesetting" # Prefer the modesetting driver in X11
       "fbdev" # Fallback to fbdev
     ];
-  }
+  } else {};
 }
