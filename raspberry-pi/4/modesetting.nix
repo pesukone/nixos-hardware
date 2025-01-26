@@ -18,7 +18,7 @@ let
         fragment@0 {
           target = <&cma>;
           __overlay__ {
-            size = <(${toString fkms-cfg.cma or kms-cfg.cma} * 1024 * 1024)>;
+            size = <(${toString (fkms-cfg.cma or kms-cfg.cma)} * 1024 * 1024)>;
           };
         };
       };
