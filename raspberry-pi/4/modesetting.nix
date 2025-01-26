@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  fmks-cfg = config.hardware.raspberry-pi."4".fkms-3d;
+  fkms-cfg = config.hardware.raspberry-pi."4".fkms-3d;
   kms-cfg = config.hardware.raspberry-pi."4".kms-3d;
   # Equivalent to:
   # https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/cma-overlay.dts
