@@ -46,6 +46,26 @@ in rec
         '';
       };
     };
+
+    raspberry-pi."4".kms-3d = {
+      enable = lib.mkEnableOption ''
+        Enable modesetting through kms-3d
+      '';
+      cma = lib.mkOption {
+        type = lib.types.int;
+        default = 512;
+        description = ''
+          Amount of CMA (contiguous memory allocator) to reserve, in MiB.
+
+          The foundation overlay defaults to 256MiB, for backward compatibility.
+          As the Raspberry Pi 4 family of hardware has ample amount of memory, we
+          can reserve more without issue.
+
+          Additionally, reserving too much is not an issue. The kernel will use
+          CMA last if the memory is needed.
+        '';
+      };
+    };
   };
 
   config =
