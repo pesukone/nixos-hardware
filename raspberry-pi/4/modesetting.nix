@@ -24,7 +24,7 @@ let
       };
     '';
   };
-in rec
+in
 {
   options.hardware = {
     raspberry-pi."4".fkms-3d = {
@@ -68,9 +68,8 @@ in rec
     };
   };
 
-  config =
-    if fkms-cfg.enable
-    then {
+  config = mkMerge [
+    (mkIf fkms-cfg.enable {
     # doesn't work for the CM module, so we exclude e.g. bcm2711-rpi-cm4.dts
     hardware.deviceTree.filter = "bcm2711-rpi-4*.dtb";
 
@@ -129,9 +128,8 @@ in rec
       "modesetting" # Prefer the modesetting driver in X11
       "fbdev" # Fallback to fbdev
     ];
-  }
-  else if kms-cfg.enable
-  then {
+    })
+    (mkIf kms-cfg.enable {
     # doesn't work for the CM module, so we exclude e.g. bcm2711-rpi-cm4.dts
     hardware.deviceTree.filter = "bcm2711-rpi-4*.dtb";
 
@@ -344,5 +342,6 @@ in rec
       "modesetting" # Prefer the modesetting driver in X11
       "fbdev" # Fallback to fbdev
     ];
-  } else {};
+    })
+  ];
 }
