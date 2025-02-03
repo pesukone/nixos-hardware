@@ -24,7 +24,7 @@ let
       };
     '';
   };
-in
+in rec
 {
   options.hardware = {
     raspberry-pi."4".fkms-3d = {
