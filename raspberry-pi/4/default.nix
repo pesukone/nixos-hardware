@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -19,6 +24,7 @@
     ./touch-ft5406.nix
     ./tv-hat.nix
     ./xhci.nix
+    ./bar-size.nix
   ];
 
   boot = {
@@ -38,7 +44,6 @@
   };
 
   hardware.deviceTree.filter = lib.mkDefault "bcm2711-rpi-*.dtb";
-
 
   assertions = [
     {
